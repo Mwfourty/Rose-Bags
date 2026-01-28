@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../Images/RB Favicon.png">
+</head>
+<body>
+    <main class="checkout-container">
+        <section class="checkout-form">
+        <h1>Checkout</h1>
+            <label for="full-name">
+                Full Name:
+                <input type="text" id="full-name" name="full-name" required>
+            </label>
+            <label for="email-address">
+                Email Address:
+                <input type="text" id="email-address" name="email-address" required>
+            </label>
+            <label for="phone-number">
+                Phone Number:
+                <input type="tel" id="phone-number" name="phone-number" required>
+            </label>
+            <label for="delivery-address">
+                Delivery Address:
+                <textarea id="delivery-address" name="delivery-address" required></textarea>
+            </label>
+
+            <button id="place-order-btn">Place Order</button>
+        </section>
+          <div class="checkout-side">
+
+        <aside class="checkout-summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">R0.00</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span id="delivery">R0.00</span>
+            </div>
+
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="total">R0.00</span>
+            </div>
+        </aside>
+        <div class="logo checkout-logo">
+            <a href="../index.html">
+                <img src="../Images/RB Logo-removebg.png" id="rb-logo" alt="RoseBags Logo">
+            </a>
+            <a href="../index.html">
+                <img src="../Images/RoseBags Text Logo-removebg.png" id="rb-text-logo" alt="">
+            </a>
+        </div>
+
+    </div>
+
+    </main>
+
+    <script src="../Javascript/checkout.js"></script>
+    <a
+    href="https://wa.me/27774462588"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Chat with us on WhatsApp"
+    >
+    <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</body>
+</html>

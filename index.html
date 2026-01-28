@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoseBags | Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./Images/RB Favicon.png">
+</head>
+<body>
+    <header>
+        <div class="logo-wrapper">
+            <img src="./Images/RB Logo-removebg.png" alt="logo" id="rb-logo">
+            <img src="./Images/RoseBags Text Logo-removebg.png" alt="logo" id="rb-text-logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Shop</a></li>
+                <li><a href="./About/about.html">About</a></li>
+                <li><a href="./Contact/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <div class="icon-wrapper" id="cart-icon">
+                <a href="Cart/cart.html"><i class="fa-solid fa-basket-shopping" title="Cart"></i></a>
+                <span class="dot" id="cart-dot"></span>
+            </div>
+            <div class="icon-wrapper" id="fav-icon">
+                <a href="Wishlist/wishlist.html"><i class="fa-solid fa-heart" title="Wishlist"></i></a>
+                <span class="dot" id="fav-dot"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Your Perfect Bag</h1>
+                <p>Stylish, Durable, and Affordable Bags for Every Occasion</p>
+                <a href="#shop-now" class="btn">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- SHOP SECTION -->
+        <div class="shop-layout">
+            <!-- LEFT COLUMN -->
+            <div class="sidebar-wrapper">
+                <!-- SIDEBAR -->
+                <aside class="sidebar">
+                    <video autoplay muted loop id="bg-video">
+                        <source src="./Images/Aside bg vid3.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="sidebar-content">
+                        <input
+                            type="text"
+                            id="search-bar"
+                            placeholder="Search products..."
+                            oninput="searchProducts()"
+                        >
+                        <i class="fa-solid fa-magnifying-glass" onclick="searchProducts()"></i>
+
+                        <h2>Filter by Category</h2>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="tote-bags" class="category-filter" value="Tote Bags">
+                                <label for="tote-bags">Tote Bags</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="handbags" class="category-filter" value="Handbags">
+                                <label for="handbags">Handbags</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="crossbody-bags" class="category-filter" value="Crossbody Bags">
+                                <label for="crossbody-bags">Crossbody Bags</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="clutches" class="category-filter" value="Clutches">
+                                <label for="clutches">Clutches</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="shoulder-bags" class="category-filter" value="Shoulder Bags">
+                                <label for="shoulder-bags">Shoulder Bags</label>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- UNDER SIDEBAR (SORT) -->
+                <div class="sort-container">
+                    <h2>Sort By</h2>
+                    <select id="sort-products" onchange="sortProducts()">
+                        <option value="default">Default</option>
+                        <option value="price-low-high">Price: Low → High</option>
+                        <option value="price-high-low">Price: High → Low</option>
+                        <option value="name-az">Name: A–Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="shop-container" id="shop-container">
+                <!-- JS injects products here -->
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 RoseBags. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61585510779651" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@rose.bags96?_r=1&_t=ZS-92tf60JvszC" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Javascript/product-objects.js"></script>
+    <script src="Javascript/shop.js"></script>
+    <a
+    href="https://wa.me/27774462588"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Chat with us on WhatsApp"
+    >
+    <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</body>
+</html>
