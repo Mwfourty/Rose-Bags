@@ -11,7 +11,7 @@ const products = [{
     type: "Bags",
     category: "Crossbody Bags",
     name: "Autumn New Solid Color",
-    price: 229.99,
+    price: 159.99,
     image: "../ProductImages/Product14.jpeg",
     stock: 5
 }, {

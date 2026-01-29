@@ -56,7 +56,7 @@ document.getElementById("place-order-btn").addEventListener("click", () => {
 
     // Redirect to PayFast
     console.log("Order ready:", order);
-    submitToPayFast(order);
+    //submitToPayFast(order); // Uncomment when ready to integrate
 });
 
 // PayFast integration
@@ -64,11 +64,11 @@ document.getElementById("place-order-btn").addEventListener("click", () => {
 function submitToPayFast(order) {
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://sandbox.payfast.co.za/eng/process";
+    form.action = "https://www.payfast.co.za/eng/process";
 
     const fields = {
-        merchant_id: "10000100",          // sandbox ID
-        merchant_key: "46f0cd694581a",    // sandbox key
+        merchant_id: "23988601",          // Merchant ID
+        merchant_key: "kqprcurp62n79",    // Merchant key
 
         amount: order.total.toFixed(2),
         item_name: "RoseBags Order",
@@ -76,8 +76,8 @@ function submitToPayFast(order) {
         name_first: order.customer.name,
         email_address: order.customer.email,
 
-        return_url: "http://localhost:5500/success.html",
-        cancel_url: "http://localhost:5500/cancel.html"
+        return_url: "http://rosebags.co.za/success.html",
+        cancel_url: "http://rosebags.co.za/cancel.html"
     };
 
     for (let key in fields) {
@@ -91,5 +91,42 @@ function submitToPayFast(order) {
     document.body.appendChild(form);
     form.submit();
 };
+
+// Temporary WhatsApp checkout until PayFast checkout is implemented
+
+document.getElementById("place-order-btn").addEventListener("click", () => {
+    alert("Checkout features are not yet implemented. You’ll be redirected to WhatsApp.");
+
+    const name = document.getElementById("full-name").value;
+    const email = document.getElementById("email-address").value;
+    const phone = document.getElementById("phone-number").value;
+    const address = document.getElementById("delivery-address").value;
+
+    const total = document.getElementById("total").textContent;
+
+    if (!name || !email || !phone || !address) {
+        alert("Please fill in all fields before proceeding.");
+        return;
+    }
+
+    const message = `
+New Order Request 
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Address: ${address}
+
+Order Total: ${total}
+
+Sent from RoseBags Website
+    `;
+
+    const whatsappNumber = "27774462588"; // RoseBags WhatsApp number
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+});
 
 
