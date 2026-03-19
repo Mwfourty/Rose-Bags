@@ -140,10 +140,12 @@ nav ul li a.active {
     z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .mobile-nav-overlay.open {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .mobile-nav {
