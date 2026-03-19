@@ -16,13 +16,22 @@
             <img src="./Images/RB Logo-removebg.png" alt="logo" id="rb-logo">
             <img src="./Images/RoseBags Text Logo-removebg.png" alt="logo" id="rb-text-logo">
         </div>
-        <nav>
+
+        <!-- Hamburger Button -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="main-nav">
             <ul>
                 <li><a href="index.html" class="active">Shop</a></li>
                 <li><a href="./About/about.html">About</a></li>
                 <li><a href="./Contact/contact.html">Contact</a></li>
             </ul>
         </nav>
+
         <div class="header-icons">
             <div class="icon-wrapper" id="cart-icon">
                 <a href="Cart/cart.html"><i class="fa-solid fa-basket-shopping" title="Cart"></i></a>
@@ -35,6 +44,21 @@
         </div>
     </header>
 
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html" class="active" onclick="closeMenu()">Shop</a></li>
+                <li><a href="./About/about.html" onclick="closeMenu()">About</a></li>
+                <li><a href="./Contact/contact.html" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            <div class="mobile-nav-icons">
+                <a href="Cart/cart.html"><i class="fa-solid fa-basket-shopping"></i> Cart</a>
+                <a href="Wishlist/wishlist.html"><i class="fa-solid fa-heart"></i> Wishlist</a>
+            </div>
+        </nav>
+    </div>
+
     <main>
         <section class="hero">
             <div class="hero-content">
@@ -46,11 +70,16 @@
 
         <!-- SHOP SECTION -->
         <div class="shop-layout">
+            <!-- Mobile Filter Toggle -->
+            <button class="filter-toggle" id="filter-toggle" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders"></i> Filter & Sort
+            </button>
+
             <!-- LEFT COLUMN -->
-            <div class="sidebar-wrapper">
+            <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <!-- SIDEBAR -->
                 <aside class="sidebar">
-                    <video autoplay muted loop id="bg-video">
+                    <video autoplay muted loop id="bg-video" playsinline>
                         <source src="./Images/Aside bg vid3.mp4" type="video/mp4">
                     </video>
 
@@ -121,13 +150,45 @@
 
     <script src="Javascript/product-objects.js"></script>
     <script src="Javascript/shop.js"></script>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('mobile-nav-overlay');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = overlay.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        function closeMenu() {
+            overlay.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', false);
+            document.body.classList.remove('menu-open');
+        }
+
+        // Close menu on overlay background tap
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeMenu();
+        });
+
+        // Mobile sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar-wrapper');
+            sidebar.classList.toggle('sidebar-open');
+        }
+    </script>
+
     <a
-    href="https://wa.me/27774462588"
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat with us on WhatsApp"
+        href="https://wa.me/27774462588"
+        class="whatsapp-float"
+        target="_blank"
+        aria-label="Chat with us on WhatsApp"
     >
-    <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 </body>
 </html>

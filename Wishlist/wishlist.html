@@ -11,49 +11,123 @@
     <link rel="icon" type="image/png" href="../Images/RB Favicon.png">
 </head>
 <body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-wrapper">
+            <img src="../Images/RB Logo-removebg.png" alt="logo" id="rb-logo-header">
+            <img src="../Images/RoseBags Text Logo-removebg.png" alt="logo" id="rb-text-logo-header">
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="../index.html">Shop</a></li>
+                <li><a href="../About/about.html">About</a></li>
+                <li><a href="../Contact/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <div class="icon-wrapper">
+                <a href="../Cart/cart.html"><i class="fa-solid fa-basket-shopping" title="Cart"></i></a>
+            </div>
+            <div class="icon-wrapper">
+                <a href="wishlist.html"><i class="fa-solid fa-heart" title="Wishlist"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="../index.html" onclick="closeMenu()">Shop</a></li>
+                <li><a href="../About/about.html" onclick="closeMenu()">About</a></li>
+                <li><a href="../Contact/contact.html" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            <div class="mobile-nav-icons">
+                <a href="../Cart/cart.html"><i class="fa-solid fa-basket-shopping"></i> Cart</a>
+                <a href="wishlist.html"><i class="fa-solid fa-heart"></i> Wishlist</a>
+            </div>
+        </nav>
+    </div>
+
     <main class="wishlist-container">
         <h1>Your Wishlist</h1>
-        <div id="wishlist-items">
-            <!--JS will inject wishlist items-->
-        </div>
-        <div class="wishlist-summary">
-            <div class="logo">
-                <a href="../index.html">
-                    <img src="../Images/RB Logo-removebg.png" id="rb-logo" alt="RoseBags Logo">
-                </a>
-                <a href="../index.html">
-                    <img src="../Images/RoseBags Text Logo-removebg.png" id="rb-text-logo" alt="">
-                </a>
-            </div>
-            <h2>Wishlist Summary</h2>
 
-            <div class="summary-row">
-                <span>Subtotal:</span>
-                <span id="subtotal">R0.00</span>
+        <div class="wishlist-layout">
+            <div id="wishlist-items">
+                <!-- JS will inject wishlist items -->
             </div>
 
-            <div class="summary-row">
-                <span>Delivery:</span>
-                <span id="delivery">R0.00</span>
-            </div>
+            <div class="wishlist-summary">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../Images/RB Logo-removebg.png" id="rb-logo" alt="RoseBags Logo">
+                    </a>
+                    <a href="../index.html">
+                        <img src="../Images/RoseBags Text Logo-removebg.png" id="rb-text-logo" alt="">
+                    </a>
+                </div>
 
-            <div class="summary-row total">
-                <span>Total:</span>
-                <span id="total">R0.00</span>
-            </div>
+                <h2>Wishlist Summary</h2>
 
-            <a href="#"><button id="add-all-btn">Add to Cart</button></a>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery:</span>
+                    <span id="delivery">R0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">R0.00</span>
+                </div>
+
+                <a href="#"><button id="add-all-btn">Add to Cart</button></a>
+            </div>
         </div>
     </main>
 
     <script src="../Javascript/wishlist.js"></script>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('mobile-nav-overlay');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = overlay.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        function closeMenu() {
+            overlay.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', false);
+            document.body.classList.remove('menu-open');
+        }
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeMenu();
+        });
+    </script>
+
     <a
-    href="https://wa.me/27774462588"
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat with us on WhatsApp"
+        href="https://wa.me/27774462588"
+        class="whatsapp-float"
+        target="_blank"
+        aria-label="Chat with us on WhatsApp"
     >
-    <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 </body>
 </html>

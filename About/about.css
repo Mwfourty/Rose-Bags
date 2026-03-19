@@ -9,6 +9,11 @@ body {
     font-family: var(--font-body);
 }
 
+body.menu-open {
+    overflow: hidden;
+}
+
+/* ===== HEADER ===== */
 header {
     display: flex;
     justify-content: space-between;
@@ -19,7 +24,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    scale: 0.95;
     background: #F5F1EC;
 }
 
@@ -34,11 +38,11 @@ nav {
     left: -6%;
 }
 
- #rb-logo {
+#rb-logo {
     height: 80px;
 }
 
- #rb-text-logo {
+#rb-text-logo {
     height: 30px;
     margin-bottom: 24px;
 }
@@ -93,7 +97,7 @@ nav ul li a.active {
     cursor: pointer;
 }
 
-#cart-icon a, 
+#cart-icon a,
 #fav-icon a {
     color: #333;
 }
@@ -108,29 +112,145 @@ nav ul li a.active {
     border-radius: 50%;
     border: 2px solid white;
     animation: pop 0.2s ease;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
 @keyframes pop {
-    0% {transform: scale(0.5);}
-    100% {transform: scale(1);}
+    0% { transform: scale(0.5); }
+    100% { transform: scale(1); }
 }
-/*Header Styles End*/
 
-/*About Section Styles Start*/
+/* ===== HAMBURGER ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+}
 
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== MOBILE NAV OVERLAY ===== */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.open {
+    opacity: 1;
+}
+
+.mobile-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75%;
+    max-width: 320px;
+    height: 100%;
+    background: #F5F1EC;
+    padding: 100px 40px 40px;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.mobile-nav-overlay.open .mobile-nav {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.mobile-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: block;
+}
+
+.mobile-nav ul li a.active,
+.mobile-nav ul li a:hover {
+    color: #C2A26C;
+}
+
+.mobile-nav-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px dashed #C2A26C;
+    padding-top: 24px;
+}
+
+.mobile-nav-icons a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s;
+}
+
+.mobile-nav-icons a:hover {
+    color: #C2A26C;
+}
+
+/* ===== ABOUT SECTION ===== */
 .container {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    scale: 0.95;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 .about-image {
     flex: 0 0 30%;
 }
 
-.about-image img{
+.about-image img {
     width: 95%;
     height: auto;
     border: 2px solid #C2A26C;
@@ -150,18 +270,12 @@ nav ul li a.active {
     padding: 5px 10px;
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .about-image img {
-        width: 100%;
-    }
+.about-section p {
+    margin-bottom: 24px;
+    line-height: 1.7;
 }
 
-/*Footer Styles Start*/
-
+/* ===== FOOTER ===== */
 .footer-content {
     padding: 20px 40px;
     margin-top: 20px;
@@ -187,4 +301,124 @@ nav ul li a.active {
 .social-icons i:hover {
     color: #C2A26C;
     scale: 1.1;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    z-index: 900;
+    transition: transform 0.2s ease, background 0.2s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: scale(1.1);
+}
+
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================= */
+
+/* ===== TABLET (≤ 1024px) ===== */
+@media (max-width: 1024px) {
+    header {
+        scale: 1;
+        padding: 16px 24px;
+    }
+
+    .container {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .about-image {
+        flex: 0 0 35%;
+    }
+}
+
+/* ===== MOBILE (≤ 768px) ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 14px 20px;
+        scale: 1;
+    }
+
+    #rb-logo {
+        height: 55px;
+    }
+
+    #rb-text-logo {
+        height: 22px;
+        margin-bottom: 18px;
+    }
+
+    /* Hide desktop nav, show hamburger */
+    nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobile-nav-overlay {
+        display: block;
+    }
+
+    .header-icons {
+        display: none;
+    }
+
+    /* Stack about layout */
+    .container {
+        flex-direction: column;
+        padding: 20px 16px;
+        gap: 16px;
+    }
+
+    .about-image {
+        flex: none;
+        width: 100%;
+    }
+
+    .about-image img {
+        width: 100%;
+    }
+
+    .about-section h3 {
+        font-size: 1.6rem;
+    }
+
+    .footer-content {
+        padding: 20px 0;
+        margin-left: 0;
+    }
+}
+
+/* ===== SMALL MOBILE (≤ 480px) ===== */
+@media (max-width: 480px) {
+    .about-section h3 {
+        font-size: 1.4rem;
+    }
+
+    .about-section p {
+        font-size: 0.95rem;
+    }
+
+    .social-icons a {
+        font-size: 1.6rem;
+    }
 }

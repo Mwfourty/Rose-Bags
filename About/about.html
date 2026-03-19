@@ -16,24 +16,49 @@
             <img src="../Images/RB Logo-removebg.png" alt="logo" id="rb-logo">
             <img src="../Images/RoseBags Text Logo-removebg.png" alt="logo" id="rb-text-logo">
         </div>
-        <nav>
+
+        <!-- Hamburger Button -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="main-nav">
             <ul>
                 <li><a href="../index.html">Shop</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="../Contact/contact.html">Contact</a></li>
             </ul>
         </nav>
-            <div class="header-icons">
-                <div class="icon-wrapper" id="cart-icon">
-                    <a href="../Cart/cart.html"><i class="fa-solid fa-basket-shopping" title="Cart"></i></a>
-                    <span class="dot" id="cart-dot"></span>
-                </div>
-                <div class="icon-wrapper" id="fav-icon">
-                    <a href="../Wishlist/wishlist.html"><i class="fa-solid fa-heart" title="Wishlist"></i></a>
-                    <span class="dot" id="fav-dot"></span>
-                </div>
+
+        <div class="header-icons">
+            <div class="icon-wrapper" id="cart-icon">
+                <a href="../Cart/cart.html"><i class="fa-solid fa-basket-shopping" title="Cart"></i></a>
+                <span class="dot" id="cart-dot"></span>
+            </div>
+            <div class="icon-wrapper" id="fav-icon">
+                <a href="../Wishlist/wishlist.html"><i class="fa-solid fa-heart" title="Wishlist"></i></a>
+                <span class="dot" id="fav-dot"></span>
+            </div>
         </div>
     </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="../index.html" onclick="closeMenu()">Shop</a></li>
+                <li><a href="about.html" class="active" onclick="closeMenu()">About</a></li>
+                <li><a href="../Contact/contact.html" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            <div class="mobile-nav-icons">
+                <a href="../Cart/cart.html"><i class="fa-solid fa-basket-shopping"></i> Cart</a>
+                <a href="../Wishlist/wishlist.html"><i class="fa-solid fa-heart"></i> Wishlist</a>
+            </div>
+        </nav>
+    </div>
+
     <main class="container">
         <div class="about-image">
             <img src="../Images/RB About Image (1).jpg" alt="About Us">
@@ -51,28 +76,53 @@
             </p>
             <h3>Our Vision</h3>
             <p>
-                Our vision is to grow into a recognized and trusted handbag brand  and beyond, known for quality, affordability, and timeless design. We aspire to expand into exclusive collections while supporting local growth and creating lasting value for our customers.
+                Our vision is to grow into a recognized and trusted handbag brand and beyond, known for quality, affordability, and timeless design. We aspire to expand into exclusive collections while supporting local growth and creating lasting value for our customers.
             </p>
             <footer>
                 <div class="footer-content">
                     <div class="social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61585510779651" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="https://www.tiktok.com/@rose.bags96?_r=1&_t=ZS-92tf60JvszC" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/rosebags34?igsh=MXpidzRweTQ5bW00" target="_blank"><i class="fa-brands fa-instagram" ></i></a>
+                        <a href="https://www.instagram.com/rosebags34?igsh=MXpidzRweTQ5bW00" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                     <p>&copy; 2025 RoseBags. All rights reserved.</p>
                 </div>
             </footer>
         </section>
     </main>
+
     <script src="../Javascript/header.js"></script>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('mobile-nav-overlay');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = overlay.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        function closeMenu() {
+            overlay.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', false);
+            document.body.classList.remove('menu-open');
+        }
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeMenu();
+        });
+    </script>
+
     <a
-    href="https://wa.me/27774462588"
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat with us on WhatsApp"
+        href="https://wa.me/27774462588"
+        class="whatsapp-float"
+        target="_blank"
+        aria-label="Chat with us on WhatsApp"
     >
-    <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 </body>
 </html>
